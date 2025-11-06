@@ -7,6 +7,7 @@ public class CoinRotation : MonoBehaviour
     [SerializeField] private float oscillationRange = 0.1f;
     [SerializeField] private float oscillationSpeed = 0.01f;
     private Vector3 initialPosition;
+    private bool isCollected = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,4 +24,14 @@ public class CoinRotation : MonoBehaviour
             oscillationSpeed = -oscillationSpeed;
         }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isCollected = true;
+            // playsound to integrate here
+            Destroy(gameObject);
+        }
+    }
+      
 }
