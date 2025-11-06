@@ -1,4 +1,3 @@
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class CoinRotation : MonoBehaviour
@@ -6,6 +5,8 @@ public class CoinRotation : MonoBehaviour
     [SerializeField] private float coinRotationSpeed = 2f;
     [SerializeField] private float oscillationRange = 0.1f;
     [SerializeField] private float oscillationSpeed = 0.01f;
+
+    private MeshRenderer mesh;
     private Vector3 initialPosition;
     private AudioSource coinSound;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -13,6 +14,7 @@ public class CoinRotation : MonoBehaviour
     {
         initialPosition = transform.position;
         coinSound = GetComponent<AudioSource>();
+        mesh = GetComponent<MeshRenderer>();
     }
 
     // Update is called once per frame
@@ -31,6 +33,7 @@ public class CoinRotation : MonoBehaviour
         {
             // playsound and destroy coin
             coinSound.Play();
+            mesh.enabled = false;
             Destroy(gameObject,coinSound.clip.length);
         }
     }

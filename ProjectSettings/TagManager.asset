@@ -6,6 +6,7 @@ TagManager:
   tags:
   - StairA
   - Stair B
+  - Hitbox_P
   layers:
   - Default
   - TransparentFX

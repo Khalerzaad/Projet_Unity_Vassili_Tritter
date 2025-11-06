@@ -9,16 +9,17 @@ public class WriteGameWin : MonoBehaviour
     void Start()
     {
         text = GetComponent<TMPro.TMP_Text>();
+        text.text = "";
     }
 
     // Update is called once per frame
     void Update()
     {
+        closeDelay = endgame.TimeBeforeClose();
         if (endgame == null) return;
         if (endgame.IsGameWon())
         {
-            closeDelay = endgame.TimeBeforeClose();
-            text.text = $"Félicitations !  Vous avez remporté la partie ! Fermeture dans {closeDelay}";
+            text.text = $"Félicitations !  Vous avez remporté la partie !<br>Fermeture dans {closeDelay}s";
         }
     }
 }

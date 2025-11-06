@@ -1,7 +1,7 @@
-using System.Threading;
+
 using UnityEngine;
-using UnityEngine.InputSystem.Android;
-using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
+
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     private AudioSource winSound;
     private float timeBeforeClose;
     [SerializeField] private float closingDelay = 5f;
+    private float counter = 0f;
     void Awake()
     {
         winSound = GetComponent<AudioSource>();
@@ -18,10 +19,9 @@ public class GameManager : MonoBehaviour
     {
         if (gameWon)
         {
-            float counter = 0f;
             if (counter > closingDelay)
             {
-                Application.Quit();
+                SceneManager.LoadScene("Menu");
             }
             else
             {
